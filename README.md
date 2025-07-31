@@ -4,6 +4,10 @@
 
 - [July 29 - 2025 Programs](29-07-2025/README.md)
 
+# Assignment
+
+- [Assignment 1](Assignment/Assignment%201)
+
 ## Notes
 
 - [Data Types](Notes/DataTypes.ipynb)
