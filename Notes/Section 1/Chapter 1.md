@@ -1,3 +1,9 @@
+---
+layout: page
+title: S1C1
+permalink: /section1/chapter1
+---
+
 # Literals and Variables
 
 In Python, **literals** represent fixed values like `'Hello, World!'` or numbers such as `1` and `2.0`. A literal is a direct representation of a constant value in your code. **Variables**, on the other hand, are used to store these values. You can think of variables as labeled containers that hold data, allowing you to reference and manipulate that data later.
@@ -129,3 +135,4 @@ You can also add comments at the end of a line of code:
 >>> print(1)  # This line prints the number 1
 1
 ```
+
