@@ -6,6 +6,10 @@
 print("Hello World")
 ```
 
+### OUTPUT
+
+```
+Hello World
 ---
 
 ## Exercise 2: Write a program to take 2 values from user, sum them, print the result
@@ -15,6 +19,14 @@ number1 = int(input("Enter Number 1 : "))
 number2 = int(input("Enter Number 2 : "))
 print(f"Sum Of {number1} And {number2} Is {number1 + number2}")
 ```
+
+### OUTPUT
+
+```
+Enter Number 1 : 5
+Enter Number 2 : 5
+Sum Of 5 And 5 Is 10
+---
 
 ---
 
@@ -45,6 +57,23 @@ print("x << 1 =", x << 1)  # Left shift
 print("x >> 1 =", x >> 1)  # Right shift
 ```
 
+### OUTPUT
+
+```
+Enter A Number : 2
+Enter A Float :3.33
+Enter A String : SOHAM
+ID Of a : 139892576275760 Type Of a : <class 'int'>
+ID Of b : 139892333066416 Type Of b : <class 'float'>
+ID Of c : 139892332575600 Type Of c : <class 'str'>
+Python-is-fun!
+x | y = 7
+x & y = 1
+x ^ y = 6
+x << 1 = 10
+x >> 1 = 2
+---
+
 ---
 
 ## Exercise 4: Write a program for net amount payable on purchasing Electronic goods
@@ -69,3 +98,9 @@ else:
     print("No Discount Available!")
 ```
 
+### OUTPUT
+
+```
+Enter The Cost Of Electronic Goods : 32000
+The Discounted Price Is :  28800.0
+---
