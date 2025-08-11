@@ -62,36 +62,37 @@ def scan_dir(base_dir):
 def build_mkdocs(nav_entries):
     config = {
         "site_name": "Python Programs",
-        "docs_dir": ".github/docs",  
+        "docs_dir": ".github/docs",
         "theme": {
             "name": "material",
             "palette": [
                 {
                     "scheme": "default",
-                    "primary": "indigo",
-                    "accent": "pink",
+                    "primary": "blue",
+                    "accent": "orange",
                     "toggle": {
                         "icon": "material/weather-night",
-                        "name": "Switch to dark mode"
-                    }
+                        "name": "Switch to dark mode",
+                    },
                 },
                 {
                     "scheme": "slate",
-                    "primary": "indigo",
-                    "accent": "pink",
+                    "primary": "blue",
+                    "accent": "orange",
                     "toggle": {
                         "icon": "material/weather-sunny",
-                        "name": "Switch to light mode"
-                    }
-                }
+                        "name": "Switch to light mode",
+                    },
+                },
             ],
             "features": [
-                "navigation.expand",
-                "navigation.sections",
+                "navigation.expand", 
+                "navigation.tabs",  
+                "navigation.sections", 
                 "search.highlight",
                 "search.suggest",
-                "content.code.copy"  
-            ]
+                "content.code.copy",
+            ],
         },
         "markdown_extensions": [
             "admonition",
@@ -104,16 +105,13 @@ def build_mkdocs(nav_entries):
                     "anchor_linenums": True,
                     "linenums": True,
                     "linenums_style": "table",
-                    "use_pygments": True
+                    "use_pygments": True,
                 }
             },
-            "pymdownx.superfences"
+            "pymdownx.superfences",
         ],
-        "plugins": [
-            "search",
-            "mkdocs-jupyter"
-        ],
-        "nav": nav_entries
+        "plugins": ["search", "mkdocs-jupyter"],
+        "nav": nav_entries,
     }
     return config
 
@@ -122,7 +120,7 @@ if __name__ == "__main__":
     copy_docs()
     nav = scan_dir(DOCS_DIR)
     config = build_mkdocs(nav)
-    
+
     with open("mkdocs.yml", "w") as f:
         yaml.dump(config, f, sort_keys=False)
 
