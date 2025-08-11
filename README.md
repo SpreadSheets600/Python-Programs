@@ -8,6 +8,11 @@
 
 - [Assignment 1](Assignment/Assignment%201)
 
+# Homework
+
+- [Homework 1](Homework/Homework%201)
+
+
 ## Notes
 
 - [Data Types](Notes/DataTypes.ipynb)
