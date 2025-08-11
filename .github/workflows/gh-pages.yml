@@ -1,8 +1,9 @@
 name: Deploy to GitHub Pages
+
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
 
 permissions:
@@ -20,12 +21,15 @@ jobs:
           python-version: "3.x"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt pyyaml
+        run: pip install -r requirements.txt mkdocs mkdocs-material pyyaml
 
       - name: Prepare docs and mkdocs.yml
-        run: python generate_nav.py
+        run: python generateDocs.py
 
-      - name: Build and Deploy
+      - name: Build MkDocs site
+        run: mkdocs build --clean
+
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
