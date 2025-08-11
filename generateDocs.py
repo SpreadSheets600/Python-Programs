@@ -68,8 +68,8 @@ def build_mkdocs(nav_entries):
             "palette": [
                 {
                     "scheme": "default",
-                    "primary": "blue",
-                    "accent": "orange",
+                    "primary": "indigo",
+                    "accent": "pink",
                     "toggle": {
                         "icon": "material/weather-night",
                         "name": "Switch to dark mode",
@@ -77,8 +77,8 @@ def build_mkdocs(nav_entries):
                 },
                 {
                     "scheme": "slate",
-                    "primary": "blue",
-                    "accent": "orange",
+                    "primary": "indigo",
+                    "accent": "pink",
                     "toggle": {
                         "icon": "material/weather-sunny",
                         "name": "Switch to light mode",
@@ -86,9 +86,11 @@ def build_mkdocs(nav_entries):
                 },
             ],
             "features": [
-                "navigation.expand", 
-                "navigation.tabs",  
-                "navigation.sections", 
+                "navigation.instant",
+                "navigation.expand",
+                "navigation.sections",
+                "navigation.path",
+                "navigation.prune",
                 "search.highlight",
                 "search.suggest",
                 "content.code.copy",
@@ -111,6 +113,8 @@ def build_mkdocs(nav_entries):
             "pymdownx.superfences",
         ],
         "plugins": ["search", "mkdocs-jupyter"],
+        "repo_url": "https://github.com/SpreadSheets600/python-programs",
+        "repo_name": "SpreadSheets600/Python-Programs",
         "nav": nav_entries,
     }
     return config
