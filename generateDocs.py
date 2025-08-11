@@ -1,5 +1,28 @@
 import os
+import shutil
 import yaml
+
+SOURCE_DIR = "."
+DOCS_DIR = ".github/docs"
+
+
+def copy_docs():
+    if os.path.exists(DOCS_DIR):
+        shutil.rmtree(DOCS_DIR)
+    os.makedirs(DOCS_DIR)
+
+    for root, dirs, files in os.walk(SOURCE_DIR):
+        if DOCS_DIR in root or ".git" in root or ".github" in root:
+            continue
+
+        rel_path = os.path.relpath(root, SOURCE_DIR)
+        dest_path = os.path.join(DOCS_DIR, rel_path)
+        os.makedirs(dest_path, exist_ok=True)
+
+        for file in files:
+            if file.endswith(".md") or file.endswith(".ipynb"):
+                shutil.copy2(os.path.join(root, file), os.path.join(dest_path, file))
+
 
 def scan_dir(base_dir):
     nav_entries = []
@@ -12,47 +35,95 @@ def scan_dir(base_dir):
         if not md_files:
             continue
 
-        rel_dir = os.path.relpath(root, ".")
+        rel_dir = os.path.relpath(root, base_dir)
         section_name = os.path.basename(root) if rel_dir != "." else "Home"
 
-        if rel_dir == ".":
-            # Top-level README.md
+        if "README.md" in md_files:
+            readme_path = (
+                os.path.join(rel_dir, "README.md") if rel_dir != "." else "README.md"
+            )
+            pages = [{section_name: readme_path}]
             for f in md_files:
-                if f.lower() == "readme.md":
-                    nav_entries.append({ "Home": f })
+                if f == "README.md":
+                    continue
+                title = os.path.splitext(f)[0].replace("-", " ")
+                pages.append({title: os.path.join(rel_dir, f)})
+            nav_entries.append({section_name: pages})
         else:
             pages = []
             for f in md_files:
-                title = os.path.splitext(f)[0]
-                pages.append({ title: os.path.join(rel_dir, f) })
-            nav_entries.append({ section_name: pages })
+                title = os.path.splitext(f)[0].replace("-", " ")
+                pages.append({title: os.path.join(rel_dir, f)})
+            nav_entries.append({section_name: pages})
 
     return nav_entries
 
+
 def build_mkdocs(nav_entries):
     config = {
-        "site_name": "My Repo Docs",
+        "site_name": "Python Programs",
+        "docs_dir": ".github/docs",  
         "theme": {
             "name": "material",
+            "palette": [
+                {
+                    "scheme": "default",
+                    "primary": "indigo",
+                    "accent": "pink",
+                    "toggle": {
+                        "icon": "material/weather-night",
+                        "name": "Switch to dark mode"
+                    }
+                },
+                {
+                    "scheme": "slate",
+                    "primary": "indigo",
+                    "accent": "pink",
+                    "toggle": {
+                        "icon": "material/weather-sunny",
+                        "name": "Switch to light mode"
+                    }
+                }
+            ],
             "features": [
                 "navigation.expand",
                 "navigation.sections",
                 "search.highlight",
-                "search.suggest"
+                "search.suggest",
+                "content.code.copy"  
             ]
         },
+        "markdown_extensions": [
+            "admonition",
+            "codehilite",
+            "footnotes",
+            "tables",
+            "toc",
+            {
+                "pymdownx.highlight": {
+                    "anchor_linenums": True,
+                    "linenums": True,
+                    "linenums_style": "table",
+                    "use_pygments": True
+                }
+            },
+            "pymdownx.superfences"
+        ],
         "plugins": [
             "search",
-            "mkdocs-jupyter",
-            "awesome-pages"
+            "mkdocs-jupyter"
         ],
         "nav": nav_entries
     }
     return config
 
+
 if __name__ == "__main__":
-    nav = scan_dir(".")
+    copy_docs()
+    nav = scan_dir(DOCS_DIR)
     config = build_mkdocs(nav)
+    
     with open("mkdocs.yml", "w") as f:
         yaml.dump(config, f, sort_keys=False)
-    print("✅ mkdocs.yml generated")
+
+    print("✅ mkdocs.yml generated and docs folder prepared")
