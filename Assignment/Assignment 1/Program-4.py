@@ -11,7 +11,7 @@ if cost >= 50000:
     discount = cost * 0.15
     print("The Discounted Price Is : ", cost - discount)
 
-elif 30000 >= cost <= 50000:
+elif 30000 <= cost <= 50000:
     discount = cost * 0.10
     print("The Discounted Price Is : ", cost - discount)
 
