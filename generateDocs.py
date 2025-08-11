@@ -114,7 +114,7 @@ def build_mkdocs(nav_entries):
         ],
         "plugins": ["search", "mkdocs-jupyter"],
         "repo_url": "https://github.com/SpreadSheets600/python-programs",
-        "repo_name": "SpreadSheets600/Python-Programs",
+        "repo_name": "Python-Programs",
         "nav": nav_entries,
     }
     return config
