@@ -1,8 +1,8 @@
-# Program 1 : Programming Assignment : Homework 2
+# Programming Assignment : Homework 2
 
 ---
 
-## Square each number in a nested list
+## Program 1 : Square each number in a nested list
 
 ```python
 nested_list = [[1, 2], [3, 4], [5, 6]]
