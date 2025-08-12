@@ -42,6 +42,7 @@ plugins:
 - search
 - offline
 - tags
+- table-reader
 repo_url: https://github.com/SpreadSheets600/Python-Programs
 repo_name: Python-Programs
 nav:
@@ -49,7 +50,6 @@ nav:
   - Home: README.md
   - Theory: ./Theory.md
 - 29-07-2025:
-  - 29-07-2025: 29-07-2025/29-07-2025.md
   - Program 1: 29-07-2025/Program-1.md
   - Program 2: 29-07-2025/Program-2.md
   - Program 3: 29-07-2025/Program-3.md
@@ -57,16 +57,16 @@ nav:
   - Program 5: 29-07-2025/Program-5.md
   - Program 6: 29-07-2025/Program-6.md
   - Program 7: 29-07-2025/Program-7.md
+  - README: 29-07-2025/README.md
 - Assignment:
   - Assignment 1:
-    - Assignment 1: Assignment/Assignment 1/Assignment 1.md
     - Program 1: Assignment/Assignment 1/Program-1.md
     - Program 2: Assignment/Assignment 1/Program-2.md
     - Program 3: Assignment/Assignment 1/Program-3.md
     - Program 4: Assignment/Assignment 1/Program-4.md
+    - README: Assignment/Assignment 1/README.md
 - Homework:
   - Homework 1:
-    - Homework 1: Homework/Homework 1/Homework 1.md
     - Program 1: Homework/Homework 1/Program-1.md
     - Program 2: Homework/Homework 1/Program-2.md
     - Program 3: Homework/Homework 1/Program-3.md
@@ -74,8 +74,8 @@ nav:
     - Program 5: Homework/Homework 1/Program-5.md
     - Program 6: Homework/Homework 1/Program-6.md
     - Program 7: Homework/Homework 1/Program-7.md
+    - README: Homework/Homework 1/README.md
   - Homework 2:
-    - Homework 2: Homework/Homework 2/Homework 2.md
     - Program 1: Homework/Homework 2/Program-1.md
     - Program 2: Homework/Homework 2/Program-2.md
     - Program 3: Homework/Homework 2/Program-3.md
@@ -83,6 +83,7 @@ nav:
     - Program 5: Homework/Homework 2/Program-5.md
     - Program 6: Homework/Homework 2/Program-6.md
     - Program 7: Homework/Homework 2/Program-7.md
+    - README: Homework/Homework 2/README.md
 - Notes:
   - DataTypes: Notes/DataTypes.ipynb
   - Section 1:
