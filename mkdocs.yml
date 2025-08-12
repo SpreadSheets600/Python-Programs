@@ -43,6 +43,9 @@ plugins:
 - offline
 - tags
 - table-reader
+- mkdocs-jupyter:
+    include:
+    - '*.ipynb'
 repo_url: https://github.com/SpreadSheets600/Python-Programs
 repo_name: Python-Programs
 nav:

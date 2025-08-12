@@ -28,8 +28,8 @@ ALLOWED_EXT = (
 
 CODE_WRAP_EXTS = (".cpp", ".c", ".h", ".hpp", ".py")
 IGNORE_FILES = {
-"generateDocs.py",
-"generateREADME.py",
+    "generateDocs.py",
+    "generateREADME.py",
 }
 
 
@@ -235,7 +235,13 @@ def build_mkdocs(nav_entries):
             "pymdownx.superfences",
         ],
         "extra_css": [f"assets/{os.path.basename(CUSTOM_CSS)}"],
-        "plugins": ["search", "offline", "tags", "table-reader"],
+        "plugins": [
+            "search",
+            "offline",
+            "tags",
+            "table-reader",
+            {"mkdocs-jupyter": {"include": ["*.ipynb"]}},
+        ],
         "repo_url": "https://github.com/SpreadSheets600/Python-Programs",
         "repo_name": "Python-Programs",
         "nav": nav_entries,
