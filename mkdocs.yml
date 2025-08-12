@@ -1,92 +1,90 @@
 site_name: Python Programs
 docs_dir: .github/docs
-
 theme:
   name: material
   palette:
-    - scheme: default
-      primary: indigo
-      accent: pink
-      toggle:
-        icon: material/weather-night
-        name: Switch to dark mode
-    - scheme: slate
-      primary: indigo
-      accent: pink
-      toggle:
-        icon: material/weather-sunny
-        name: Switch to light mode
-  font:
-    code: Roboto Mono
+  - scheme: default
+    primary: indigo
+    accent: pink
+    toggle:
+      icon: material/weather-night
+      name: Switch to dark mode
+  - scheme: slate
+    primary: indigo
+    accent: pink
+    toggle:
+      icon: material/weather-sunny
+      name: Switch to light mode
   features:
-    - navigation.instant
-    - navigation.expand
-    - navigation.sections
-    - navigation.path
-    - navigation.prune
-    - search.highlight
-    - search.suggest
-    - content.code.copy
-
+  - navigation.instant
+  - navigation.expand
+  - navigation.sections
+  - navigation.path
+  - navigation.prune
+  - search.highlight
+  - search.suggest
+  - content.code.copy
 markdown_extensions:
-  - admonition
-  - codehilite
-  - footnotes
-  - tables
-  - toc
-  - pymdownx.highlight:
-      anchor_linenums: true
-      linenums: true
-      linenums_style: table
-      use_pygments: true
-  - pymdownx.superfences
-
+- admonition
+- codehilite
+- footnotes
+- tables
+- toc
+- pymdownx.highlight:
+    anchor_linenums: true
+    linenums: true
+    linenums_style: table
+    use_pygments: true
+- pymdownx.superfences
 plugins:
-  - search
-  - mkdocs-jupyter
-
+- search
+- mkdocs-jupyter
 repo_url: https://github.com/SpreadSheets600/python-programs
 repo_name: SpreadSheets600/Python-Programs
-
 nav:
+- .github:
   - Home:
-      - Home: README.md
-      - Theory: ./Theory.md
+    - Home: README.md
+    - Theory: ./Theory.md
+- docs:
   - 29-07-2025:
-      - 29-07-2025: 29-07-2025/README.md
-  - Assignment 1:
-      - Assignment 1: Assignment/Assignment 1/README.md
-  - Homework 1:
-      - Homework 1: Homework/Homework 1/README.md
-  - Homework 2:
-      - Homework 2: Homework/Homework 2/README.md
+    - 29-07-2025: 29-07-2025/README.md
   - Notes:
-      - DataTypes: Notes/DataTypes.ipynb
+    - DataTypes: Notes/DataTypes.ipynb
+- Assignment:
+  - Assignment 1:
+    - Assignment 1: Assignment/Assignment 1/README.md
+- Homework:
+  - Homework 1:
+    - Homework 1: Homework/Homework 1/README.md
+  - Homework 2:
+    - Homework 2: Homework/Homework 2/README.md
+- Notes:
   - Section 1:
-      - Chapter 1: Notes/Section 1/Chapter 1.md
-      - Chapter 2: Notes/Section 1/Chapter 2.md
-      - Chapter 3: Notes/Section 1/Chapter 3.md
-      - Chapter 4: Notes/Section 1/Chapter 4.md
+    - Chapter 1: Notes/Section 1/Chapter 1.md
+    - Chapter 2: Notes/Section 1/Chapter 2.md
+    - Chapter 3: Notes/Section 1/Chapter 3.md
+    - Chapter 4: Notes/Section 1/Chapter 4.md
   - Section 2:
-      - Chapter 1: Notes/Section 2/Chapter 1.md
-      - Chapter 2: Notes/Section 2/Chapter 2.md
-      - Chapter 3: Notes/Section 2/Chapter 3.md
-      - Chapter 4: Notes/Section 2/Chapter 4.md
+    - Chapter 1: Notes/Section 2/Chapter 1.md
+    - Chapter 2: Notes/Section 2/Chapter 2.md
+    - Chapter 3: Notes/Section 2/Chapter 3.md
+    - Chapter 4: Notes/Section 2/Chapter 4.md
   - Section 3:
-      - Chapter 1: Notes/Section 3/Chapter 1.md
-      - Chapter 2: Notes/Section 3/Chapter 2.md
-      - Chapter 3: Notes/Section 3/Chapter 3.md
-      - Chapter 4: Notes/Section 3/Chapter 4.md
-      - Chapter 5: Notes/Section 3/Chapter 5.md
-      - Chapter 6: Notes/Section 3/Chapter 6.md
+    - Chapter 1: Notes/Section 3/Chapter 1.md
+    - Chapter 2: Notes/Section 3/Chapter 2.md
+    - Chapter 3: Notes/Section 3/Chapter 3.md
+    - Chapter 4: Notes/Section 3/Chapter 4.md
+    - Chapter 5: Notes/Section 3/Chapter 5.md
+    - Chapter 6: Notes/Section 3/Chapter 6.md
   - Section 4:
-      - Chapter 1: Notes/Section 4/Chapter 1.md
-      - Chapter 2: Notes/Section 4/Chapter 2.md
-      - Chapter 3: Notes/Section 4/Chapter 3.md
-      - Chapter 4: Notes/Section 4/Chapter 4.md
+    - Chapter 1: Notes/Section 4/Chapter 1.md
+    - Chapter 2: Notes/Section 4/Chapter 2.md
+    - Chapter 3: Notes/Section 4/Chapter 3.md
+    - Chapter 4: Notes/Section 4/Chapter 4.md
   - Section 5:
-      - Chapter 1: Notes/Section 5/Chapter 1.md
-      - Chapter 2: Notes/Section 5/Chapter 2.md
-      - Chapter 3: Notes/Section 5/Chapter 3.md
-      - Chapter 4: Notes/Section 5/Chapter 4.md
-      - Chapter 5: Notes/Section 5/Chapter 5.md
+    - Chapter 1: Notes/Section 5/Chapter 1.md
+    - Chapter 2: Notes/Section 5/Chapter 2.md
+    - Chapter 3: Notes/Section 5/Chapter 3.md
+    - Chapter 4: Notes/Section 5/Chapter 4.md
+    - Chapter 5: Notes/Section 5/Chapter 5.md
