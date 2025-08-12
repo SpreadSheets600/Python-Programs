@@ -1,6 +1,6 @@
+import argparse
 from pathlib import Path
 
-BASE_DIR = Path(r"Homework")
 
 def extract_title_and_code(filepath):
     with open(filepath, "r", encoding="utf-8") as f:
@@ -21,19 +21,38 @@ def extract_title_and_code(filepath):
     return title, "".join(code_lines).strip()
 
 
-def generate_readme_for_homework(homework_path):
-    homework_name = homework_path.name
-    readme_path = homework_path / "README.md"
+def generate_readme_for_folder(folder_path, file_pattern="Program-*.py"):
+    readme_path = folder_path / "README.md"
 
-    md_lines = [f"# Programming Assignment: {homework_name}", "", "---", ""]
+    if readme_path.exists():
+        print(f"Skipping {folder_path.name}, README.md Already Exsist.")
+        return
 
-    for prog_file in sorted(homework_path.glob("Program-*.py")):
+    folder_name_cap = " ".join(word.capitalize() for word in folder_path.name.split())
+
+    md_lines = [f"# Programming Assignment : {folder_name_cap}", "", "---", ""]
+
+    prog_files = sorted(folder_path.glob(file_pattern))
+    if not prog_files:
+        print(
+            f"Warning : No Files Matching The Pattern '{file_pattern}' Found In {folder_path}"
+        )
+        return
+
+    for prog_file in prog_files:
+        print(f"Processing File : {prog_file.name}")
         title, code = extract_title_and_code(prog_file)
 
         md_lines.append(f"## {title}")
         md_lines.append("")
         md_lines.append("```python")
         md_lines.append(code)
+        md_lines.append("```")
+        md_lines.append("")
+        md_lines.append("OUTPUT :")
+        md_lines.append("")
+        md_lines.append("```bash")
+        md_lines.append("")
         md_lines.append("```")
         md_lines.append("")
         md_lines.append("---")
@@ -46,11 +65,41 @@ def generate_readme_for_homework(homework_path):
 
 
 def main():
-    print("Generating README files for Homework folders...")
-    for folder in sorted(BASE_DIR.iterdir()):
-        if folder.is_dir() and folder.name.lower().startswith("homework"):
-            generate_readme_for_homework(folder)
+    parser = argparse.ArgumentParser(
+        description="Generate README.md Files For Code Folders."
+    )
+    parser.add_argument(
+        "base_dir", type=str, help="Base Directory To Scan For Code Folders"
+    )
+    parser.add_argument(
+        "--pattern",
+        type=str,
+        default="Program-*.py",
+        help="File Glob Pattern to Match Program Files ( efault: 'Program-*.py' )",
+    )
+    parser.add_argument(
+        "--filter",
+        type=str,
+        default=None,
+        help="Optional : Only Process Folders Starting with This String",
+    )
+    args = parser.parse_args()
 
-            print(f"Processed {folder.name}")
+    base_path = Path(args.base_dir)
+    if not base_path.exists() or not base_path.is_dir():
+        print(
+            f"Error : Base Directory '{base_path}' Does Not Exist or Is Not a Directory."
+        )
+        return
+
+    for folder in sorted(base_path.iterdir()):
+        if folder.is_dir():
+            if args.filter:
+                if not folder.name.lower().startswith(args.filter.lower()):
+                    continue
+
+            generate_readme_for_folder(folder, file_pattern=args.pattern)
+
+
 if __name__ == "__main__":
     main()
