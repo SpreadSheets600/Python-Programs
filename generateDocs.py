@@ -48,39 +48,28 @@ def copy_docs():
     if os.path.exists(DOCS_DIR):
         shutil.rmtree(DOCS_DIR)
 
-    os.makedirs(DOCS_DIR)
+    os.makedirs(DOCS_DIR, exist_ok=True)
+
+    skip_dirs = {DOCS_DIR, ".git", ".github", ".vscode", "site", OVERRIDES_DIR}
 
     for root, _, files in os.walk(SOURCE_DIR):
-        if any(
-            skip in root
-            for skip in [DOCS_DIR, ".git", ".github", ".vscode", "site", OVERRIDES_DIR]
-        ):
+        if any(skip in root for skip in skip_dirs):
             continue
 
         rel_path = os.path.relpath(root, SOURCE_DIR)
         dest_path = os.path.join(DOCS_DIR, rel_path)
         os.makedirs(dest_path, exist_ok=True)
 
-        folder_name = os.path.basename(root) if rel_path != "." else "Home"
-        folder_name_clean = folder_name.replace(" ", "_")
-
         for file in files:
             if file in IGNORE_FILES:
                 continue
 
-            src_file = os.path.join(root, file)
-            filename_lower = file.lower()
+            file_lower = file.lower()
+            if file_lower.endswith(ALLOWED_EXT):
+                src_file = os.path.join(root, file)
+                shutil.copy2(src_file, os.path.join(dest_path, file))
 
-            if file.lower().endswith(ALLOWED_EXT):
-                if filename_lower == "readme.md":
-                    shutil.copy2(src_file, os.path.join(dest_path, "README.md"))
-                else:
-                    shutil.copy2(src_file, os.path.join(dest_path, file))
-
-                if (
-                    file.lower().endswith(CODE_WRAP_EXTS)
-                    and filename_lower != "readme.md"
-                ):
+                if file_lower.endswith(CODE_WRAP_EXTS):
                     md_name = os.path.splitext(file)[0] + ".md"
                     wrap_code_as_md(src_file, os.path.join(dest_path, md_name))
 
@@ -130,55 +119,54 @@ def ensure_mkdocs_extra_css():
 
 
 def scan_dir(base_dir):
-    nav_entries = {}
-    md_exts = (".md", ".ipynb")
+    md_ext = (".md", ".ipynb")
 
-    for root, dirs, files in os.walk(base_dir):
-        dirs.sort()
-        files.sort()
+    def scan_folder(path):
+        entries = list(os.scandir(path))
+        dirs = sorted([e for e in entries if e.is_dir()], key=lambda d: d.name.lower())
+        files = sorted(
+            [e for e in entries if e.is_file()], key=lambda f: f.name.lower()
+        )
 
-        md_files = [f for f in files if f.lower().endswith(md_exts)]
-        if not md_files:
-            continue
+        md_files = [f.name for f in files if f.name.lower().endswith(md_ext)]
 
-        rel_dir = os.path.relpath(root, base_dir)
-        section_name = os.path.basename(root) if rel_dir != "." else "Home"
+        if not md_files and not dirs:
+            return []
 
-        if rel_dir == ".":
-            parent_name = "."
-        else:
-            parent_name = os.path.basename(os.path.dirname(root))
-            if parent_name == os.path.basename(base_dir):
-                parent_name = "."
+        section_title = (
+            os.path.basename(path)
+            if os.path.abspath(path) != os.path.abspath(base_dir)
+            else "Home"
+        )
 
         pages = []
 
-        folder_readme = f"{section_name}.md" if rel_dir != "." else "README.md"
-
-        if folder_readme in md_files:
-            readme_path = (
-                os.path.join(rel_dir, folder_readme)
-                if rel_dir != "."
-                else folder_readme
+        if "README.md" in md_files:
+            pages.append(
+                {
+                    section_title: os.path.relpath(
+                        os.path.join(path, "README.md"), base_dir
+                    )
+                }
             )
-            pages.append({section_name: readme_path})
-            for f in sorted(md_files):
-                if f == folder_readme:
-                    continue
-                title = os.path.splitext(f)[0].replace("-", " ")
-                pages.append({title: os.path.join(rel_dir, f)})
-        else:
-            for f in sorted(md_files):
-                title = os.path.splitext(f)[0].replace("-", " ")
-                pages.append({title: os.path.join(rel_dir, f)})
 
-        if parent_name != ".":
-            nav_entries.setdefault(parent_name, []).append({section_name: pages})
-        else:
-            nav_entries.setdefault(section_name, pages)
+        for f in md_files:
+            if f.lower() == "readme.md":
+                continue
+            title = os.path.splitext(f)[0].replace("-", " ")
+            pages.append({title: os.path.relpath(os.path.join(path, f), base_dir)})
 
-    final_nav = [{key: value} for key, value in nav_entries.items()]
-    return final_nav
+        for d in dirs:
+            subnav = scan_folder(d.path)
+            if subnav:
+                pages.append({d.name: subnav})
+
+        if os.path.abspath(path) == os.path.abspath(base_dir):
+            return pages
+
+        return pages
+
+    return scan_folder(base_dir)
 
 
 def build_mkdocs(nav_entries):
