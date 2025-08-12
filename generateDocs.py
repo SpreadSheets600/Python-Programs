@@ -65,6 +65,9 @@ def copy_docs():
         folder_name_clean = folder_name.replace(" ", "_")
 
         for file in files:
+            if file in IGNORE_FILES:
+                continue
+            
             src_file = os.path.join(root, file)
             filename_lower = file.lower()
 
