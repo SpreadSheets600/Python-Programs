@@ -67,16 +67,13 @@ def copy_docs():
         for file in files:
             if file in IGNORE_FILES:
                 continue
-            
+
             src_file = os.path.join(root, file)
             filename_lower = file.lower()
 
             if file.lower().endswith(ALLOWED_EXT):
                 if filename_lower == "readme.md":
-                    new_md_name = (
-                        f"{folder_name}.md" if rel_path != "." else "README.md"
-                    )
-                    shutil.copy2(src_file, os.path.join(dest_path, new_md_name))
+                    shutil.copy2(src_file, os.path.join(dest_path, "README.md"))
                 else:
                     shutil.copy2(src_file, os.path.join(dest_path, file))
 
@@ -238,7 +235,7 @@ def build_mkdocs(nav_entries):
             "pymdownx.superfences",
         ],
         "extra_css": [f"assets/{os.path.basename(CUSTOM_CSS)}"],
-        "plugins": ["search", "offline", "tags"],
+        "plugins": ["search", "offline", "tags", "table-reader"],
         "repo_url": "https://github.com/SpreadSheets600/Python-Programs",
         "repo_name": "Python-Programs",
         "nav": nav_entries,
