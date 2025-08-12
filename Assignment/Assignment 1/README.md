@@ -1,6 +1,6 @@
 # Programming Assignment 1
 
-## Exercise 1: Write a Python program to print "Hello World"
+## Program 1: Write a Python program to print "Hello World"
 
 ```python
 print("Hello World")
@@ -12,7 +12,7 @@ print("Hello World")
 Hello World
 ```
 
-## Exercise 2: Write a program to take 2 values from user, sum them, print the result
+## Program 2: Write a program to take 2 values from user, sum them, print the result
 
 ```python
 number1 = int(input("Enter Number 1 : "))
@@ -28,7 +28,7 @@ Enter Number 2 : 5
 Sum Of 5 And 5 Is 10
 ```
 
-## Exercise 3: Demonstrate `id()`, `type()`, `sep`, `end`, bitwise operators (`|`, `&`, `^`, `<<`, `>>`)
+## Program 3: Demonstrate `id()`, `type()`, `sep`, `end`, bitwise operators (`|`, `&`, `^`, `<<`, `>>`)
 
 ```python
 # User Input
@@ -72,7 +72,7 @@ x << 1 = 10
 x >> 1 = 2
 ```
 
-## Exercise 4: Write a program for net amount payable on purchasing Electronic goods
+## Program 4: Write a program for net amount payable on purchasing Electronic goods
 
 - If Cost >= 50000: discount 15%
 - If Cost between 30000 to 50000: discount 10%
