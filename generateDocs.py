@@ -5,14 +5,27 @@ import yaml
 SOURCE_DIR = "."
 DOCS_DIR = ".github/docs"
 
+ALLOWED_EXT = (
+    ".md",
+    ".ipynb",
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".gif",
+    ".svg",
+    ".py",
+    ".txt",
+)
+
 
 def copy_docs():
     if os.path.exists(DOCS_DIR):
         shutil.rmtree(DOCS_DIR)
+        
     os.makedirs(DOCS_DIR)
 
-    for root, dirs, files in os.walk(SOURCE_DIR):
-        if DOCS_DIR in root or ".git" in root or ".github" in root:
+    for root, _, files in os.walk(SOURCE_DIR):
+        if any(skip in root for skip in [DOCS_DIR, ".git", ".github"]):
             continue
 
         rel_path = os.path.relpath(root, SOURCE_DIR)
@@ -20,7 +33,7 @@ def copy_docs():
         os.makedirs(dest_path, exist_ok=True)
 
         for file in files:
-            if file.endswith(".md") or file.endswith(".ipynb"):
+            if file.lower().endswith(ALLOWED_EXT):
                 shutil.copy2(os.path.join(root, file), os.path.join(dest_path, file))
 
 
@@ -31,7 +44,7 @@ def scan_dir(base_dir):
         dirs.sort()
         files.sort()
 
-        md_files = [f for f in files if f.endswith(".md") or f.endswith(".ipynb")]
+        md_files = [f for f in files if f.lower().endswith((".md", ".ipynb"))]
         if not md_files:
             continue
 
@@ -39,39 +52,27 @@ def scan_dir(base_dir):
         section_name = os.path.basename(root) if rel_dir != "." else "Home"
         parent_name = os.path.basename(os.path.dirname(root))
 
-        if "README.md" in md_files:
-            readme_path = (
-                os.path.join(rel_dir, "README.md") if rel_dir != "." else "README.md"
-            )
+        if "README.md" in [f.lower() for f in md_files]:
+            readme_path = os.path.join(rel_dir, "README.md") if rel_dir != "." else "README.md"
             pages = [{section_name: readme_path}]
             for f in md_files:
-                if f == "README.md":
+                if f.lower() == "readme.md":
                     continue
                 title = os.path.splitext(f)[0].replace("-", " ")
                 pages.append({title: os.path.join(rel_dir, f)})
         else:
-            pages = []
-            for f in md_files:
-                title = os.path.splitext(f)[0].replace("-", " ")
-                pages.append({title: os.path.join(rel_dir, f)})
+            pages = [{os.path.splitext(f)[0].replace("-", " "): os.path.join(rel_dir, f)} for f in md_files]
 
         if parent_name != ".":
             nav_entries.setdefault(parent_name, []).append({section_name: pages})
         else:
             nav_entries.setdefault(section_name, pages)
 
-    final_nav = []
-    for key, value in nav_entries.items():
-        if isinstance(value, list):
-            final_nav.append({key: value})
-        else:
-            final_nav.append({key: value})
-
-    return final_nav
+    return [{key: value} for key, value in nav_entries.items()]
 
 
 def build_mkdocs(nav_entries):
-    config = {
+    return {
         "site_name": "Python Programs",
         "docs_dir": ".github/docs",
         "theme": {
@@ -128,7 +129,6 @@ def build_mkdocs(nav_entries):
         "repo_name": "SpreadSheets600/Python-Programs",
         "nav": nav_entries,
     }
-    return config
 
 
 if __name__ == "__main__":
