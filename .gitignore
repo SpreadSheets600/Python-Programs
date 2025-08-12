@@ -180,3 +180,4 @@ site/
 *.pyc
 __pycache__/
 
+.github/docs/
