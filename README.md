@@ -11,6 +11,7 @@
 # Homework
 
 - [Homework 1](Homework/Homework%201)
+- [Homework 2](Homework/Homework%202)
 
 
 ## Notes
