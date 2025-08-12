@@ -1,4 +1,4 @@
-# Programming Assignment : Homework 2
+# Program 1 : Programming Assignment : Homework 2
 
 ---
 
@@ -24,7 +24,7 @@ Squared Nested List :  [[1, 4], [9, 16], [25, 36]]
 
 ---
 
-## Generating a nested list using user input
+## Program 2 : Generating a nested list using user input
 
 ```python
 nested_list = []
@@ -60,7 +60,7 @@ Nested List :  [[1, 2, 3], [4, 5]]
 
 ---
 
-## Create a tuple using user input
+## Program 3 : Create a tuple using user input
 
 ```python
 lst = []
@@ -88,7 +88,7 @@ Tuple Created From User Input:  (1, 2, 3)
 
 ---
 
-## Find length of any tuple
+## Program 4 : Find length of any tuple
 
 ```python
 tup = (1, 2, 3, 4, 5)
@@ -105,7 +105,7 @@ Length of Tuple:  5
 
 ---
 
-## Count occurances of an element
+## Program 5 : Count occurances of an element
 
 ```python
 tup = (1, 2, 3, 4, 5, 3, 2, 1)
@@ -124,7 +124,7 @@ The Element 3 Occurs :  2
 
 ---
 
-## Concatinate to tuples
+## Program 6 : Concatinate two tuples
 
 ```python
 tup1 = (1, 2, 3)
@@ -143,7 +143,7 @@ Concatenated Tuple :  (1, 2, 3, 4, 5, 6)
 
 ---
 
-## Convert list to tuple
+## Program 7 : Convert list to tuple
 
 ```python
 lst = [1, 2, 3, 4, 5]
