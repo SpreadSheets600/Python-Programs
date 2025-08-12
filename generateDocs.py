@@ -25,7 +25,7 @@ def copy_docs():
 
 
 def scan_dir(base_dir):
-    nav_entries = []
+    nav_entries = {}
 
     for root, dirs, files in os.walk(base_dir):
         dirs.sort()
@@ -37,6 +37,7 @@ def scan_dir(base_dir):
 
         rel_dir = os.path.relpath(root, base_dir)
         section_name = os.path.basename(root) if rel_dir != "." else "Home"
+        parent_name = os.path.basename(os.path.dirname(root))
 
         if "README.md" in md_files:
             readme_path = (
@@ -48,15 +49,25 @@ def scan_dir(base_dir):
                     continue
                 title = os.path.splitext(f)[0].replace("-", " ")
                 pages.append({title: os.path.join(rel_dir, f)})
-            nav_entries.append({section_name: pages})
         else:
             pages = []
             for f in md_files:
                 title = os.path.splitext(f)[0].replace("-", " ")
                 pages.append({title: os.path.join(rel_dir, f)})
-            nav_entries.append({section_name: pages})
 
-    return nav_entries
+        if parent_name != ".":
+            nav_entries.setdefault(parent_name, []).append({section_name: pages})
+        else:
+            nav_entries.setdefault(section_name, pages)
+
+    final_nav = []
+    for key, value in nav_entries.items():
+        if isinstance(value, list):
+            final_nav.append({key: value})
+        else:
+            final_nav.append({key: value})
+
+    return final_nav
 
 
 def build_mkdocs(nav_entries):
@@ -114,7 +125,7 @@ def build_mkdocs(nav_entries):
         ],
         "plugins": ["search", "mkdocs-jupyter"],
         "repo_url": "https://github.com/SpreadSheets600/python-programs",
-        "repo_name": "Python-Programs",
+        "repo_name": "SpreadSheets600/Python-Programs",
         "nav": nav_entries,
     }
     return config
