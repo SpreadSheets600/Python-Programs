@@ -3,6 +3,7 @@
 ## Contents
 
 - [July 29 - 2025 Programs](29-07-2025/README.md)
+- [August 19 - 2025 Programs](19-08-2025)
 
 # Assignment
 
@@ -14,10 +15,15 @@
 - [Homework 1](Homework/Homework%201)
 - [Homework 2](Homework/Homework%202)
 
-
 ## Notes
 
 - [Data Types](Notes/DataTypes.ipynb)
+
+### Numpy
+
+- [Chapter 1 : Numpy Basics & Arrays](Notes/Numpy/Chapter%201.md)
+- [Chapter 2 : Numpy Array Indexing](Notes/Numpy/Chapter%202.md)
+- [Chapter 3 : Numpy Array Maths](Notes/Numpy/Chapter%203.md)
 
 ### Section 1
 
