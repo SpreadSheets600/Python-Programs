@@ -9,6 +9,7 @@
 
 - [Assignment 1](Assignment/Assignment%201)
 - [Assignment 2](Assignment/Assignment%202)
+- [Assignment 3](Assignment/Assignment%203)
 
 # Homework
 
