@@ -11,11 +11,13 @@
 - [Assignment 2](Assignment/Assignment%202)
 - [Assignment 3](Assignment/Assignment%203)
 - [Assignment 4](Assignment/Assignment%204)
+- [Assignment 5](Assignment/Assignment%205)
 
 # Homework
 
 - [Homework 1](Homework/Homework%201)
 - [Homework 2](Homework/Homework%202)
+- [Homework 3](Homework/Homework%203)
 
 ## Notes
 
