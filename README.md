@@ -4,35 +4,35 @@ A maintained, Markdown-first archive of Python programs, assignments, homework, 
 
 | Section | Index |
 | ------- | ----- |
-| Lab Sessions | [July 29, 2025](29-07-2025/README.md) · [August 19, 2025](19-08-2025/README.md) |
-| Assignments | [Assignment 1](Assignment/Assignment%201/README.md) · [Assignment 2](Assignment/Assignment%202/README.md) · [Assignment 3](Assignment/Assignment%203/README.md) · [Assignment 4](Assignment/Assignment%204/README.md) · [Assignment 5](Assignment/Assignment%205/README.md) |
-| Homework | [Homework 1](Homework/Homework%201/README.md) · [Homework 2](Homework/Homework%202/README.md) · [Homework 3](Homework/Homework%203/README.md) |
-| Practice | [Practice Questions And Answers](Practice/README.md) |
+| Lab Sessions | [July 29, 2025](29-07-2025/) · [August 19, 2025](19-08-2025/) |
+| Assignments | [Assignment 1](Assignment/Assignment%201/) · [Assignment 2](Assignment/Assignment%202/) · [Assignment 3](Assignment/Assignment%203/) · [Assignment 4](Assignment/Assignment%204/) · [Assignment 5](Assignment/Assignment%205/) |
+| Homework | [Homework 1](Homework/Homework%201/) · [Homework 2](Homework/Homework%202/) · [Homework 3](Homework/Homework%203/) |
+| Practice | [Practice Questions And Answers](Practice/) |
 | Theory | [Theory Questions](Theory.md) |
 | Notes | [Data Types](Notes/DataTypes.md) |
 
 ## Lab Sessions
 
-- [July 29, 2025 : List Operations](29-07-2025/README.md)
-- [August 19, 2025 : Bubble Sort And Numpy](19-08-2025/README.md)
+- [July 29, 2025 : List Operations](29-07-2025/)
+- [August 19, 2025 : Bubble Sort And Numpy](19-08-2025/)
 
 ## Assignments
 
-- [Assignment 1](Assignment/Assignment%201/README.md)
-- [Assignment 2](Assignment/Assignment%202/README.md)
-- [Assignment 3](Assignment/Assignment%203/README.md)
-- [Assignment 4](Assignment/Assignment%204/README.md)
-- [Assignment 5](Assignment/Assignment%205/README.md)
+- [Assignment 1](Assignment/Assignment%201/)
+- [Assignment 2](Assignment/Assignment%202/)
+- [Assignment 3](Assignment/Assignment%203/)
+- [Assignment 4](Assignment/Assignment%204/)
+- [Assignment 5](Assignment/Assignment%205/)
 
 ## Homework
 
-- [Homework 1 : List Operations](Homework/Homework%201/README.md)
-- [Homework 2](Homework/Homework%202/README.md)
-- [Homework 3 : Random Numbers And Math](Homework/Homework%203/README.md)
+- [Homework 1 : List Operations](Homework/Homework%201/)
+- [Homework 2](Homework/Homework%202/)
+- [Homework 3 : Random Numbers And Math](Homework/Homework%203/)
 
 ## Practice
 
-- [Practice Questions And Answers](Practice/README.md)
+- [Practice Questions And Answers](Practice/)
 
 ## Theory
 
