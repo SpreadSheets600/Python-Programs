@@ -55,10 +55,6 @@ print(total)
 
 The `while` keyword is used in Python to create a loop. The expression adjacent to `while` is a boolean expression, called the **while-condition**. Lines 4 and 5 make up the body of the `while` loop. If the condition evaluates to `True`, control enters the body of the `while`. The lines in the body are sequentially executed. After the last line in the body is executed, the control loops back to the condition evaluation. As long as the condition is `True`, the body of the `while` keeps getting executed. The moment the condition becomes `False`, the body of the `while` is skipped, and control transfers to the next line. The body of the `while` loop must always be indented; this helps to separate it from the rest of the code.
 
-### Visual Representation
-
-![While Loop Visual Representation](path/to/visual_representation.png)
-
 Let us consider another example:
 
 ### Problem

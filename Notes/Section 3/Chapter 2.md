@@ -34,10 +34,6 @@ In this example:
 - The sequence is processed from left to right.
 - Once the rightmost element has been printed, control returns to line 1 for one last time. Since there are no more elements to read in the sequence, the control exits the loop.
 
-### Visual Representation
-
-![For Loop Visual Representation](path/to/visual_representation.png)
-
 Similar to `while` loops and `if-else` blocks, the body of a `for` loop should be indented.
 
 ---

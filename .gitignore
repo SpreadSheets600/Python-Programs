@@ -176,8 +176,13 @@ pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python
 
+# Markdown Archive Engine (site generator, fetched at build time)
+.engine/
+engine/
+dist/
+.astro/
+node_modules/
+
 site/
 *.pyc
 __pycache__/
-
-.github/docs/
